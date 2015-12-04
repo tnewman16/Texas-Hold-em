@@ -1,0 +1,162 @@
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+
+<?import javafx.scene.image.ImageView?>
+<?import java.util.ArrayList?>
+<BorderPane fx:controller="Poker.Controller"
+            stylesheets="/Poker/style.css"
+            xmlns:fx="http://javafx.com/fxml" prefHeight="1000" prefWidth="1000">
+
+    <top>
+        <HBox id="top" alignment="CENTER" minHeight="75" maxHeight="75">
+                <Label fx:id="topLabel" id="topLabel" text="Welcome to Texas Hold'em!"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox id="wooden" alignment="TOP_CENTER" spacing="60">
+            <Label fx:id="commandsLabel" id="commandsLabel" text="Commands"/>
+
+            <VBox alignment="CENTER" spacing="60"  minWidth="200" maxWidth="200">
+
+                <VBox alignment="CENTER" spacing="5">
+
+                    <HBox alignment="CENTER" spacing="10" minHeight="50" maxHeight="50" minWidth="180" maxWidth="180">
+                        <Label fx:id="raiseLabel" id="betText" text="Raise:"/>
+                        <TextField fx:id="betTextField" maxHeight="25" maxWidth="100"/>
+                    </HBox>
+
+                    <Button fx:id="betButton" text="Raise" textFill="black" onAction="#performCommand"/>
+
+                </VBox>
+
+                <Button fx:id="callButton" text="Call" textFill="black" onAction="#performCommand"/>
+                <Button fx:id="foldButton" text="Fold" textFill="black" onAction="#performCommand"/>
+                <Label id="betErrorLabel" fx:id="betErrorLabel" visible="false"/>
+
+            </VBox>
+        </VBox>
+    </left>
+
+    <center>
+        <VBox id="outerGame" alignment="TOP_CENTER">
+
+            <HBox id="deckZone" minHeight="300" maxHeight="300">
+                <VBox id="deckPile" alignment="TOP_CENTER" minWidth="150">
+                    <ImageView id="deck" fitHeight="150" preserveRatio="true"/>
+
+                </VBox>
+
+                <HBox id="tableCards" alignment="BOTTOM_CENTER" spacing="5">
+                    <ImageView id="tableCard" fx:id="tableCardOne" fitHeight="150" preserveRatio="true"/>
+                    <ImageView id="tableCard" fx:id="tableCardTwo" fitHeight="150" preserveRatio="true"/>
+                    <ImageView id="tableCard" fx:id="tableCardThree" fitHeight="150" preserveRatio="true"/>
+                    <ImageView id="tableCard" fx:id="tableCardFour" fitHeight="150" preserveRatio="true"/>
+                    <ImageView id="tableCard" fx:id="tableCardFive" fitHeight="150" preserveRatio="true"/>
+
+                </HBox>
+
+            </HBox>
+
+            <HBox id="handZone" alignment="CENTER_LEFT" minHeight="175" spacing="5">
+
+                <VBox id="flipBox" alignment="CENTER_RIGHT" minWidth="250" spacing="10">
+
+                    <Label fx:id="handNameLabel"/>
+                    <Button fx:id="flipButton" text="Flip Cards" onMouseClicked="#flipCards"/>
+
+                </VBox>
+
+                <VBox id="handBoxOne" alignment="CENTER" minWidth="125" maxWidth="125">
+                    <ImageView id="handCardOne" fx:id="handCardOne" fitHeight="150" preserveRatio="true"/>
+                </VBox>
+
+                <VBox id="HandBoxTwo" alignment="CENTER" minWidth="125" maxWidth="125">
+                    <ImageView id="handCardTwo" fx:id="handCardTwo" fitHeight="150" preserveRatio="true"/>
+                </VBox>
+
+                <VBox alignment="CENTER" spacing="10">
+                    <HBox alignment="CENTER" spacing="10" minWidth="275">
+                       <Label id="potLabel" text="Pot:"/>
+
+                       <Label fx:id="potLabel" id="potLabel"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER" spacing="10" minWidth="275">
+                        <Label id="highBetLabel" text="High Bet:"/>
+
+                        <Label fx:id="highBetLabel" id="highBetLabel"/>
+                    </HBox>
+                </VBox>
+
+            </HBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox id="wooden" alignment="CENTER_LEFT" minHeight="150" maxHeight="150">
+            <VBox  id="playerInfoLeft" alignment="CENTER" spacing="5">
+                <Label text="Player:"/>
+                <Label text="Wallet:"/>
+                <Label text="Record:"/>
+
+            </VBox>
+
+            <VBox id="playerInfoRight" alignment="CENTER" spacing="5" minWidth="140" maxWidth="140">
+                <Label fx:id="playerNameLabel" text="~"/>
+                <Label fx:id="playerWalletLabel" text="~"/>
+                <Label fx:id="playerRecordLabel" text="~"/>
+
+            </VBox>
+
+            <VBox id="liveInfoBox" alignment="TOP_CENTER" spacing="15" minWidth="525" maxWidth="525">
+                <Label textAlignment="CENTER" id="liveInfoLabel" fx:id="liveInfoLabel" wrapText="true" lineSpacing="0"/>
+                <HBox spacing="15">
+                    <Button fx:id="quitGameButton" text="Quit" onMouseClicked="#quitGame" visible="false"/>
+                    <TextField fx:id="liveTextField" maxHeight="25" minWidth="378" onAction="#getName"/>
+                    <Button fx:id="playGameButton" text="Play" onMouseClicked="#startGame"/>
+                </HBox>
+
+            </VBox>
+
+            <VBox id="gameInfoLeft" alignment="CENTER" spacing="5" minWidth="120">
+                <Label id="statText" text="Max Rounds:"/>
+                <Label id="statText" text="Highest Pot:"/>
+                <Label id="statText" text="Best Record:"/>
+                <Label id="statText"/>
+
+            </VBox>
+
+            <VBox id="gameInfoRight" alignment="CENTER" spacing="5" minWidth="70">
+                <Label id="statText" fx:id="statRoundsPlayed" text="~"/>
+                <Label id="statText" fx:id="statHighestPot" text="~"/>
+                <Label id="statText" fx:id="statBestRecord" text="~"/>
+                <Button fx:id="resetStatsButton" text="Reset"/>
+
+            </VBox>
+
+        </HBox>
+
+    </bottom>
+
+    <fx:define>
+        <ArrayList fx:id="handCards">
+            <fx:reference source="handCardOne"/>
+            <fx:reference source="handCardTwo"/>
+        </ArrayList>
+
+        <ArrayList fx:id="tableCards">
+            <fx:reference source="tableCardOne"/>
+            <fx:reference source="tableCardTwo"/>
+            <fx:reference source="tableCardThree"/>
+            <fx:reference source="tableCardFour"/>
+            <fx:reference source="tableCardFive"/>
+        </ArrayList>
+    </fx:define>
+
+</BorderPane>

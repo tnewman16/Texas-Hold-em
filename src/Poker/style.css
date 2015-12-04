@@ -1,0 +1,114 @@
+
+/*  NOT WORKING
+@font-face {
+    -fx-font-family: "fnt";
+    src: url("Wasted.otf");
+}
+*/
+
+
+.root {
+    -fx-background-image: url(woodTexture.jpg);
+    -fx-background-size: 1000px 1000px;
+    -fx-font-family: "Cochin" ;      /* Cochin (Italic) - Xingkai SC */
+    -fx-font-style: italic;
+}
+
+.label {
+    -fx-text-fill: navajowhite;
+    -fx-font-size: 24;
+}
+
+.button {
+    -fx-background-color: navajowhite;
+}
+#resetStatsButton {
+    -fx-background-color: navajowhite;
+    -fx-font-size: 12;
+}
+
+#outerGame {
+    -fx-background-image: url(darkGreenCloth.jpg);
+    -fx-background-size: 1000px 1000px;
+    -fx-border-color: black;
+}
+#deckZone {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 0 0 0 0;
+}
+
+#handCardOne {
+    -fx-image: url("cards/card_back.png");
+}
+#handCardTwo {
+    -fx-image: url("cards/card_back.png");
+}
+#flipBox {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 0 25 0 0;
+}
+#deck {
+    -fx-image: url("cards/card_back.png");
+}
+#deckPile {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 15 0 0 0;
+}
+#tableCards {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 0 0 30 0;
+}
+#tableCard {
+    -fx-image: url("cards/card_back.png");
+}
+
+#betErrorLabel {
+    -fx-font-size: 18;
+}
+
+#topLabel {
+    -fx-font-size: 45;
+}
+
+#top {
+    -fx-border-color: black;
+}
+#wooden {
+    -fx-border-color: black;
+}
+
+#commandsLabel {
+    -fx-font-size: 40;
+}
+
+#playerInfoLeft {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 20 10 20 20;
+}
+#playerInfoRight {
+    -fx-border-color: transparent black transparent transparent;
+    -fx-border-insets: 0 0 0 5;
+    -fx-border-width: 2;
+}
+
+#liveInfoBox {
+    -fx-border-color: transparent black transparent transparent;
+    -fx-border-insets: 0 0 0 15;
+    -fx-border-width: 2;
+}
+#liveInfoLabel {
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-insets: 5 15 0 0;
+    -fx-font-size: 28;
+  }
+
+#statText {
+    -fx-font-size: 20;
+}
+
+#potLabel {
+    -fx-font-size: 34;
+}
+#highBetLabel {
+    -fx-font-size: 24;
+}
