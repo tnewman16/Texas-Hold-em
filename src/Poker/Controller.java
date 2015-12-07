@@ -28,7 +28,6 @@ public class Controller {
     @FXML private Button callButton;
     @FXML private Button foldButton;
     @FXML private Button flipButton;
-    @FXML private Button resetStatsButton;
     @FXML private Label handNameLabel;
 
     @FXML private Label liveInfoLabel;
@@ -250,7 +249,6 @@ public class Controller {
             }
 
             changeFlip();
-            handNameLabel.setText("");
 
             blind.advance();
             advanceRound();
@@ -263,6 +261,9 @@ public class Controller {
         table.resetAllBets();
         table.resetGame();
         timeInRound = -1;
+        initial = true;
+        names = new ArrayList<>();
+        roundsPlayedInGame = 0;
 
         setPotLabel("$0");
         setHighBetLabel("$0");
@@ -275,6 +276,14 @@ public class Controller {
         quitGameButton.setVisible(false);
         setPlayerInfo("~","~","~");
 
+        for (int i=0; i<5; i++) {
+            if (i<2) {
+                handCards.get(i).setImage(new Image(getClass().getResource("cards/card_back.png").toExternalForm()));
+                tableCards.get(i).setImage(new Image(getClass().getResource("cards/card_back.png").toExternalForm()));
+            } else {
+                tableCards.get(i).setImage(new Image(getClass().getResource("cards/card_back.png").toExternalForm()));
+            }
+        }
     }
 
 
@@ -317,8 +326,6 @@ public class Controller {
     }
 
     public void makeBlinds(double startingMoney) {
-
-        // TODO: Implement an option for starting money
         // Establish Blinds for the Game
         double bigBlind = (int) startingMoney / 20;
         if (bigBlind > 50) {
@@ -396,6 +403,7 @@ public class Controller {
 
         } else {
             flipButton.setText("Flip Cards");
+            handNameLabel.setText("");
         }
     }
 
@@ -533,6 +541,13 @@ public class Controller {
 
     public ArrayList<String> getPlayerNames() {
         return names;
+    }
+
+    public void resetStatRecords() {
+        statRoundsPlayed.setText("" + 0);
+        statHighestPot.setText("$0.0");
+        statBestRecord.setText("0-0");
+        writeStatsToFile();
     }
 
 }

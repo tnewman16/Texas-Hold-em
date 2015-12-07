@@ -1,7 +1,5 @@
 package Poker;
 
-import javafx.scene.control.Tab;
-
 import java.util.*;
 
 /**
@@ -15,7 +13,6 @@ public class Table {
     private Deck deck;
     private HandChecker handChecker;
     private double pot = 0;
-    private Blind blind;
     private int numOfFoldedPlayers = 0;     // keeps track of who has folded during one round
 
 
