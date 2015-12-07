@@ -136,7 +136,7 @@
                 <Label id="statText" fx:id="statRoundsPlayed" text="~"/>
                 <Label id="statText" fx:id="statHighestPot" text="~"/>
                 <Label id="statText" fx:id="statBestRecord" text="~"/>
-                <Button fx:id="resetStatsButton" text="Reset"/>
+                <Button text="Reset" onAction="#resetStatRecords"/>
 
             </VBox>
 
