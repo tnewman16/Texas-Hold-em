@@ -75,6 +75,10 @@ public class Controller {
             liveInfoLabel.setText("Please enter a name that hasn't been entered.");
         }
 
+        if (names.size() > 1) {
+            playGameButton.setDisable(false);
+        }
+
     }
 
     public void setLiveInput(String text) {
@@ -272,6 +276,7 @@ public class Controller {
         setPotLabel("$0");
         setHighBetLabel("$0");
         disarmCommands();
+        playGameButton.setDisable(true);
         changeFlip();
         disarmFlipButton();
         setTopLabel("Welcome to Texas Hold'em!");

@@ -119,7 +119,7 @@
                 <HBox spacing="15">
                     <Button fx:id="quitGameButton" text="Quit" onMouseClicked="#quitGame" visible="false"/>
                     <TextField fx:id="liveTextField" maxHeight="25" minWidth="378" onAction="#getName"/>
-                    <Button fx:id="playGameButton" text="Play" onMouseClicked="#startGame"/>
+                    <Button fx:id="playGameButton" text="Play" onMouseClicked="#startGame" disable="true"/>
                 </HBox>
 
             </VBox>
