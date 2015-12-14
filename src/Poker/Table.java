@@ -89,9 +89,12 @@ public class Table {
     }
 
     public void takeCardsFromPlayers() {
-        int handSize = players.get(0).getHand().getSize();
-        for (int i = 0; i < players.size()*handSize; i++) {
-            deck.addCard(players.get(i % players.size()).takeCard());
+        for (int i = 0; i < players.size()*7; i++) {
+            try {
+                deck.addCard(players.get(i % players.size()).takeCard());
+            } catch (IndexOutOfBoundsException e) {
+                /* no-op */
+            }
         }
     }
 

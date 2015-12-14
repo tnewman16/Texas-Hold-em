@@ -54,7 +54,7 @@ public class Deck {
      * @param addedCard - the card to be added
      */
     public void addCard(Card addedCard) {
-        if (this.getSize() < size) {
+        if ((this.getSize() < size) && (!cards.contains(addedCard))) {
             cards.add(addedCard);
         }
 

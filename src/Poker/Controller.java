@@ -137,12 +137,20 @@ public class Controller {
                     && currentPlayer.getBalance() >= total) {   // if it is not the highest better and they have enough money
                 currentPlayer.bet(total);
                 table.changePot(total);
+            }
 
+            if (highestBettersName.equals("")) {
+                // if the highest better folded, this player is now the highest better
+                highestBettersName = currentPlayer.getName();
             }
 
         } else if (buttonLabel.equals("Fold")) {
             currentPlayer.fold();
             numOfFoldedPlayers++;
+            if (currentPlayer.getName().equals(highestBettersName)) {
+                // make the highest better nobody
+                highestBettersName = "";
+            }
         }
 
         updateCurrentStats(timeInRound == 3);
@@ -162,8 +170,6 @@ public class Controller {
             timeInRound++;
             advanceRound();
         }
-
-
 
     }
 
