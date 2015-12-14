@@ -50,6 +50,7 @@ public class Controller {
     private ArrayList<Player> players;
     private int tablePosition;
     private double currentHighBet = 0.0;
+    private double roundHighBet = 50.0;
     private String highestBettersName;
     private int timeInRound = -1;
     private boolean flipped = false;
@@ -105,6 +106,7 @@ public class Controller {
                     currentPlayer.bet(total);
                     table.changePot(total);
                     currentHighBet += bet;
+                    roundHighBet += bet;
                     highestBettersName = currentPlayer.getName();
 
                 } else {
@@ -184,6 +186,7 @@ public class Controller {
             }
 
             roundsPlayedInGame++;
+            roundHighBet = 50.0;
             updateBoard(winners[0]);
             updateCurrentStats(true);   // it is the end of the round, so give it true
             disarmCommands();
@@ -202,6 +205,7 @@ public class Controller {
         } else if (timeInRound < 3) {
             // advance the round otherwise
             table.dealCardsToTable(timeInRound);
+            roundHighBet = 0.0;
             updateBoard(0);
             updateCurrentStats(false);  // not the end of the round yet, so give it false
             armCommands();
@@ -290,7 +294,7 @@ public class Controller {
     public void updateBoard(int winningPosition) {
         ArrayList<Card> cardsOnTable = table.getCardsOnTable();
         setPotLabel("$" + table.getPot());
-        setHighBetLabel("$" + currentHighBet);
+        setHighBetLabel("$" + roundHighBet);
 
         Player currentPlayer = table.getPlayer(tablePosition);
         String name = currentPlayer.getName();
