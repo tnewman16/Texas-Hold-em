@@ -86,7 +86,7 @@ public class Controller {
     }
 
     /**
-     * Called when the BET button is pressed.
+     * Called when any of the command buttons are pressed.
      *
      * @param event - the action on the button
      */
