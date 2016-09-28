@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Poker FX:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Poker_FX_jar</output-path>
+    <root id="archive" name="Poker FX.jar">
+      <element id="module-output" name="Poker FX" />
+    </root>
+  </artifact>
+</component>
